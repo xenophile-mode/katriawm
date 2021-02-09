@@ -1,0 +1,119 @@
+   _         _        _
+  | | ____ _| |_ _ __(_) __ ___      ___ __ ___
+  | |/ / _` | __| '__| |/ _` \ \ /\ / / '_ ` _ \
+  |   < (_| | |_| |  | | (_| |\ V  V /| | | | | |
+  |_|\_\__,_|\__|_|  |_|\__,_| \_/\_/ |_| |_| |_|
+  https://uninformativ.de/git/katriawm
+  https://uninformativ.de/bugs.html
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+A rather simple X11 window manager. Core features:
+
+    - Tiling and floating
+    - Title bars and theming
+    - Per-screen workspaces, per-workspace layouts
+    - Application rules, layout save slots (during runtime)
+    - No sloppy focus
+    - Basic ICCCM and EWMH support
+    - Non-reparenting
+
+Looking for screenshots? https://uninformativ.de/desktop/
+
+
+Installation
+------------
+
+The following C libraries are required at runtime:
+
+    - libx11
+    - libxft
+    - libxrandr
+
+katriawm expects to be run on a POSIX-ish operating system.
+
+To build the program and install it to /usr/local, please use GNU make:
+
+    $ cd src/
+    $ make
+    # make install
+
+To install katriawm on an Arch Linux system, use the AUR package:
+
+    https://aur.archlinux.org/packages/katriawm/
+
+
+Running
+-------
+
+katriawm comprises two core components: The actual window manager and a
+client to control the manager. First, you run the WM via your ~/.xinitrc
+or similar:
+
+    $ katriawm
+
+katriawm provides no means of specifying key bindings. I suggest using
+nhkd (or sxhkd version 0.5.5 -- later versions lack important mouse
+events):
+
+    https://uninformativ.de/git/nhkd/
+    https://github.com/baskerville/sxhkd
+
+katriawm publishes some of its internal state as a property on the root
+window. You can use this to draw a "pager". I wrote bevelbar to be used
+together with katriawm, its look matches katriawm's default theme:
+
+    https://uninformativ.de/git/bevelbar
+
+A tool, which you can use in your ~/.xinitrc to read and evaluate that
+property, is provided:
+
+    $ katriabi | bevelbar ...
+
+As real world examples, you can have a look at my setup:
+
+    https://uninformativ.de/git/dotfiles-pub/file/nhkd-config.h.html
+    https://uninformativ.de/git/bin-pub/file/katriawm-launch.html
+
+There is also a detailed how-to on setting up katriawm. Have a look at
+"doc/HOW-TO-SETUP.md".
+
+
+Customization
+-------------
+
+You can configure some behaviour in config.h files at compile time.
+Additionally, you must provide a theme.h at compile time which contains
+window decorations, their layout, colors, and fonts. Some themes are
+provided in the themes/ subdirectory.
+
+
+Background information
+----------------------
+
+ Credits
+
+  katriawm was written from scratch. However, as I've been using dwm for
+  several years, many parts of katriawm are heavily inspired by dwm and
+  some routines have indeed been copied.
+
+  So, many thanks to dwm and all its authors!
+
+  http://dwm.suckless.org/
+
+
+ About the name
+
+  Katria is a character from the game Skyrim. You encounter her in a
+  little side quest. The name not only sounds nice, but also reflects some
+  properties of this program.
+
+  In the game, it's just a side quest. No big story, no massive impact.
+  Similarly, katriawm is just a simple window manager. It does not try to
+  introduce new concepts that will revolutionize the world.
+
+  You help Katria find ancient ruins. Likewise, katriawm's default theme
+  was inspired by the Motif Window Manager which was written in the
+  early-1980s.

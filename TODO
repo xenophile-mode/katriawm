@@ -1,0 +1,26 @@
+TODO items and future ideas.
+
+- Simplify "gap" and "margin" code
+    - There already is manage_apply_gaps() and almost nothing has to
+      deal with gaps directly. Can we get rid of manual usage of
+      "gap_pixels" entirely?
+    - There should be a function similar to manage_apply_gaps() that
+      deals with the margin reserved for window decorations. Nothing
+      should have to deal with "m_left" and friends manually.
+    - Maybe rethink the idea of c->x and friends being the *internal*
+      size?
+- Test on different architectures
+- More IPC calls:
+    - Jump to workspace N on monitor M?
+    - Wipe all save slots?
+    - Move all clients to selected monitor (keeping their workspaces).
+- EWMH:
+    - _NET_ACTIVE_WINDOW and _NET_CLIENT_LIST if there's a really good
+      reason to support them.
+- Theming:
+    - Allow for different layout (dec_coords and maybe dgeo) depending
+      on window state.
+- Very unlikely to happen: katriarc, a client for supplying runtime
+  configuration. Would have to work the way herbstclient does (creating
+  a window). Would free you from the need to recompile and reexec
+  katriawm. Adds a lot of complexity, though.

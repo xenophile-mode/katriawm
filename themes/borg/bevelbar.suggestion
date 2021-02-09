@@ -1,0 +1,10 @@
+# bevelbar arguments that work okay with this theme.
+# (As of 2020-09-19.)
+
+-b 1 -B 1 -o black -O black -p '#474747' -m 2
+-s  0  -c  '#343434'  -c  '#aaaaaa'  -c  black  -c  black
+-s  1  -c  '#6ac100'  -c  black      -c  black  -c  black
+-s  2  -c  '#343434'  -c  '#aaaaaa'  -c  black  -c  black
+-s  3  -c  '#6ac100'  -c  black      -c  black  -c  black
+-s  4  -c  '#c10019'  -c  '#aaaaaa'  -c  black  -c  black
+-s  5  -c  '#c10019'  -c  black      -c  black  -c  black

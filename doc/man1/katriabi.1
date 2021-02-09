@@ -1,0 +1,60 @@
+.TH katriabi 1 "2017-09-16" "Katria Window Manager" "User Commands"
+.\" --------------------------------------------------------------------
+.SH NAME
+katriabi \- Bar information for katriawm
+.\" --------------------------------------------------------------------
+.SH SYNOPSIS
+\fBkatriabi\fP
+.\" --------------------------------------------------------------------
+.SH DESCRIPTION
+\fBkatriawm\fP(1) creates a property on the root window. This property
+contains some of \fBkatriawm\fP's internal state. It can be used to draw
+a bar or \(lqpager\(rq.
+.P
+\fBkatriabi\fP can monitor said property and create output suitable for
+display in a bar. That is, you should pipe the output of \fBkatriabi\fP
+into the bar of your choice.
+.\" --------------------------------------------------------------------
+.SH OPTIONS
+There are no command line options.
+.\" --------------------------------------------------------------------
+.SH "OUTPUT FORMAT"
+Currently, \fBkatriabi\fP can only create output that can be fed to
+\fBbevelbar\fP(1). No other formats are supported.
+.P
+\fBkatriabi\fP uses the following bevelbar styles:
+.TP
+0
+Unselected layout icon.
+.TP
+1
+Selected layout icon. This is used to indicate the current monitor.
+.TP
+2
+Occupied workspace.
+.TP
+3
+Current workspace.
+.TP
+4
+Urgent workspace.
+.TP
+5
+Current workspace if urgent.
+.\" --------------------------------------------------------------------
+.SH ENVIRONMENT
+.TP
+.B DISPLAY
+Target display.
+.\" --------------------------------------------------------------------
+.SH LICENSE
+\fBkatriabi\fP is released under the MIT license. See the accompanying
+\fILICENSE\fP file.
+.\" --------------------------------------------------------------------
+.SH HISTORY
+\fBkatriabi\fP was originally written by Peter Hofmann. The project
+was started in December 2015.
+.\" --------------------------------------------------------------------
+.SH "SEE ALSO"
+.BR katriawm (1),
+.BR bevelbar (1).

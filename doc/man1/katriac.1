@@ -1,0 +1,135 @@
+.TH katriac 1 "2020-06-11" "Katria Window Manager" "User Commands"
+.\" --------------------------------------------------------------------
+.SH NAME
+katriac \- Client for katriawm
+.\" --------------------------------------------------------------------
+.SH SYNOPSIS
+\fBkatriac\fP \fICOMMAND\fP [\fIARGUMENTS\fP]
+.\" --------------------------------------------------------------------
+.SH DESCRIPTION
+\fBkatriac\fP can be used to control \fBkatriawm\fP. For example, you
+can instruct the WM to move windows, switch workspaces, and so on.
+\fBkatriac\fP should be called from a hotkey daemon like \fBsxhkd\fP(1).
+.\" --------------------------------------------------------------------
+.SH OPTIONS
+\fBkatriac\fP expects exactly one command, likely to be followed by some
+arguments. The following commands are available:
+.TP
+\fBclient_center_floating\fP
+If the currently selected client is floating, center it on the currently
+selected monitor.
+.TP
+\fBclient_close\fP
+Ask the currently selected client to gracefully close itself.
+.TP
+\fBclient_floating_toggle\fP
+Toggle floating mode of currently selected client.
+.TP
+\fBclient_fullscreen_toggle\fP
+Toggle fullscreen mode of currently selected client.
+.TP
+\fBclient_kill\fP
+Kill the currently selected client. No questions asked.
+.TP
+\fBclient_maximize_floating\fP
+If the currently selected client is floating, maximize it on the
+currently selected monitor.
+.TP
+\fBclient_move_list\fP \fItarget\fP
+Move the currently selected client in the internal list of clients. This
+can affect the tiling layout, for example. \fItarget\fP must be one of
+\fBprev\fP, \fBnext\fP.
+.TP
+\fBclient_move_mouse\fP \fIevent\fP
+Move the window which is currently under the mouse pointer. \fIevent\fP
+must be one of \fBdown\fP, \fBmotion\fP, \fBup\fP. Note that
+\fBclient_move_mouse down\fP can also be used to raise a window.
+.TP
+\fBclient_resize_mouse\fP \fIevent\fP
+Resize the window which is currently under the mouse pointer. \fIevent\fP
+must be one of \fBdown\fP, \fBmotion\fP, \fBup\fP.
+.TP
+\fBclient_select\fP \fItarget\fP
+Focus another client on the current workspace. \fItarget\fP must be one
+of \fBprev\fP, \fBnext\fP, \fBrecent\fP. \fBrecent\fP selects the
+previously selected client on the current workspace.
+.TP
+\fBclient_switch_monitor\fP \fItarget\fP
+Move currently selected client to another monitor. \fItarget\fP must be
+one of \fBleft\fP, \fBright\fP.
+.TP
+\fBclient_switch_workspace\fP \fItarget\fP
+Move currently selected client to another workspace on the same monitor.
+\fItarget\fP must be one of \fBprev\fP, \fBnext\fP, or an integer
+\fIi\fP where \fI0 <= i <= 127\fP to denote one particular workspace.
+.TP
+\fBfloaters_collect\fP
+Fit all floating clients of the current workspace to the current
+monitor. Some of them might have moved around.
+.TP
+\fBlayout_set\fP \fIalgorithm\fP
+Set the layout algorithm on the currently visible workspace on the
+currently selected monitor. \fIalgorithm\fP must be one of \fBtile\fP,
+\fBstack\fP, \fBmonocle\fP, \fBfloat\fP.
+.TP
+\fBmonitor_select\fP \fItarget\fP
+When multiple monitors are connected to your computer, you can use this
+command to select the active monitor. New windows will spawn on that
+monitor. \fItarget\fP must be one of \fBleft\fP, \fBright\fP,
+\fBrecent\fP, which will navigate to the montior left/right of the
+currently active monitor or to the previously selected monitor.
+.TP
+\fBplacement_store\fP \fIslot\fP
+The current window placement can be saved in one of eight slots.
+\(lqPlacement\(lq means a client's workspace, a client's monitor, the
+currently active layouts, and the currently active workspace on each
+monitor. In other words, this operation does not save a client's pixel
+coordinates. \fIslot\fP must be an integer \fIi\fP where \fI0 <= i <=
+10\fP.
+.TP
+\fBplacement_use\fP \fIslot\fP
+Restores a previously saved layout. See \fBplacement_store\fP. Note that
+this is a \(lqbest effort\(rq operation. For example, if you store a
+layout that comprises three monitors, you can restore it later on even
+when there are only two monitors connected. Clients on the
+\(lqmissing\(rq monitor will be moved to the very first monitor.
+.TP
+\fBurgency_clear_visible\fP
+Clears the urgency hint on all currently visible windows.
+.TP
+\fBurgency_mute_toggle\fP
+Toggles \(lqmute mode\(rq. When enabled, there won't be any indicators
+showing window urgency. Urgency hints are still managed, though, so upon
+disabling mute mode, you will instantly see which windows have their
+urgency hint set.
+.TP
+\fBwm_restart\fP
+Causes \fBkatriawm\fP to restart.
+.TP
+\fBwm_quit\fP
+Causes \fBkatriawm\fP to quit.
+.TP
+\fBworkspace_select\fP \fItarget\fP
+Each monitor can display exactly one workspace at a time. You can use
+this command to select the active workspace on the currently active
+monitor. \fItarget\fP must be one of \fBprev\fP, \fBnext\fP,
+\fBrecent\fP or an integer \fIi\fP where \fI0 <= i <= 127\fP to denote
+one particular workspace. \fBrecent\fP will jump to the previously
+selected workspace.
+.\" --------------------------------------------------------------------
+.SH ENVIRONMENT
+.TP
+.B DISPLAY
+Target display.
+.\" --------------------------------------------------------------------
+.SH LICENSE
+\fBkatriac\fP is released under the MIT license. See the accompanying
+\fILICENSE\fP file.
+.\" --------------------------------------------------------------------
+.SH HISTORY
+\fBkatriac\fP was originally written by Peter Hofmann. The project was
+started in December 2015.
+.\" --------------------------------------------------------------------
+.SH "SEE ALSO"
+.BR katriawm (1),
+.BR nhkd (1).
